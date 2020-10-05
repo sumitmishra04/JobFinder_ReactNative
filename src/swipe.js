@@ -6,13 +6,14 @@ import {
   Dimensions,
   LayoutAnimation,
   UIManager,
+  Platform,
 } from "react-native";
 
 const SCREEN_WIDTH = Dimensions.get("window").width;
 const SWIPE_THRESHOLD = 0.25 * SCREEN_WIDTH;
 const SWIPEOUT_DURATION = 250;
 
-class Deck extends Component {
+class Swipe extends Component {
   // static defaultProps = {
   //   onSwipeLeft() {},
   //   onSwipeRight() {},
@@ -95,7 +96,7 @@ class Deck extends Component {
     if (this.state.index >= this.props.data.length) {
       return this.props.renderNoMoreCards();
     }
-    return this.props.data
+    const deck = this.props.data
       .map((item, i) => {
         if (i < this.state.index) {
           return null;
@@ -114,13 +115,17 @@ class Deck extends Component {
         return (
           <Animated.View
             key={item.id}
-            style={[styles.cardStyle, { top: 10 * (i - this.state.index) }]}
+            style={[
+              styles.cardStyle,
+              { top: 5 * (i - this.state.index), zIndex: -i },
+            ]}
           >
             {this.props.renderCard(item)}
           </Animated.View>
         );
       })
       .reverse();
+    return Platform.OS === "android" ? deck : deck.reverse();
   };
   render() {
     return <View>{this.renderCards()}</View>;
@@ -132,4 +137,4 @@ const styles = {
     width: SCREEN_WIDTH,
   },
 };
-export default Deck;
+export default Swipe;
