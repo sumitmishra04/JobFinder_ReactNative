@@ -10,7 +10,7 @@
   "dependencies": {
     "@react-native-community/async-storage": "^1.12.0",
     "@react-native-community/masked-view": "^0.1.10",
-    "axios": "^0.20.0",
+    "axios": "^1.13.5",
     "expo": "~39.0.2",
     "expo-facebook": "~9.0.0",
     "expo-location": "^9.0.0",
@@ -20,7 +20,7 @@
     "latlng-to-zip": "0.0.2",
     "lodash": "^4.17.20",
     "moment": "^2.29.0",
-    "qs": "^6.9.4",
+    "qs": "^6.14.2",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-39.0.2.tar.gz",
